@@ -35,7 +35,7 @@ void SpiCore::set_freq(int freq) {
 
    dvsr = (uint16_t) (SYS_CLK_FREQ * 1000000 / (2 * freq));
    dvsr = dvsr - 1;   // counts 0 to dvsr-1
-   ctrl_word = cpha << 17 | cpha << 16 | dvsr;
+   ctrl_word = cpha << 17 | cpol << 16 | dvsr;
    io_write(base_addr, CTRL_REG, ctrl_word);
 
 }
@@ -45,7 +45,7 @@ void SpiCore::set_mode(int icpol, int icpha) {
 
    cpol = icpol;
    cpha = icpha;
-   ctrl_word = cpha << 17 | cpha << 16 | dvsr;
+   ctrl_word = cpha << 17 | cpol << 16 | dvsr;
    io_write(base_addr, CTRL_REG, ctrl_word);
 }
 
