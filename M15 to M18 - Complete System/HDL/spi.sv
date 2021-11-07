@@ -103,6 +103,8 @@ module spi (
                state_next = p0;
                c_next = 0;
            end
+           else
+               c_next = c_reg + 1;
          end  
          p0: begin     
             if (c_reg==dvsr) begin  // sclk 0-to-1
